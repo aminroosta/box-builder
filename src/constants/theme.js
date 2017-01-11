@@ -6,8 +6,8 @@ export const colors = {
 }
 export const sizes = {
     big: 22,
-    medium: 18,
-    small: 16,
+    medium: 20,
+    small: 18,
     padding: 10,
     small_padding: 5
 }
