@@ -7,8 +7,8 @@ import Slider from 'rc-slider'
 export default class SliderComponent extends Component {
     defaultValue = null;
     render() {
-        const {title, onChange, min = 0, max=100, defaultValue = 50} = this.props;
-        this.defaultValue = this.defaultValue === null ? defaultValue : this.defaultValue;
+        const {title, onChange, min = 0, max=100, defaultValue = 50} = this.props
+        this.defaultValue = this.defaultValue === null ? defaultValue : this.defaultValue
 
         return (
             <div style={styles.container}>
@@ -23,7 +23,7 @@ export default class SliderComponent extends Component {
     }
 }
 
-const height = 45;
+const height = 45
 const styles = {
     container: {
         background: colors.white,

@@ -8,7 +8,7 @@ import SliderComponent from './slider-component'
 import BottomComponent from './bottom-component'
 
 @observer
-export default class DivComponent extends Component {
+export default class DesignerComponent extends Component {
     render() {
         const {store} = this.props;
         return (

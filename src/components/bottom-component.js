@@ -5,9 +5,9 @@ import {colors, sizes} from '../constants/theme'
 @observer
 export default class BottomComponent extends Component {
     render() {
-        const {store} = this.props;
+        const {onClick} = this.props;
         return (
-            <div style={styles.container}>
+            <div style={styles.container} onClick={onClick}>
                 <div style={styles.text}>
                     Save to Gallary
                 </div>

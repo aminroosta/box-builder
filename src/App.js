@@ -1,34 +1,28 @@
 import React, { Component } from 'react'
+import NotificationSystem from 'react-notification-system' 
 import {observer} from 'mobx-react'
+import notification from './notification'
 
-import {colors, sizes} from './constants/theme'
 import {DESIGN_ROUTE, GALLERY_ROUTE, SEARCH_ROUTE} from './constants/routes'
 
 import TabbarComponent from './components/tabbar-component'
+import DesignContainer from './containers/design-container'
+
 import ColorPickerComponent from './components/colorpicker-component'
 import ItemContainer from './containers/item-container'
 import ItemComponent from './components/item-component'
 
-import DivComponent from './components/div-component'
-import DesignerComponent from './components/designer-component'
 
 @observer
 export default class App extends Component {
+  _designerContainer = null
   render() {
     const {store} = this.props;
     let content = null;
 
     if(store.route === DESIGN_ROUTE) {
-      content = (
-        <div style={styles.design}>
-          <div style={styles.inner}>
-            <DesignerComponent store={store.design} />
-          </div>
-          <div style={styles.inner}>
-            <DivComponent {...store.design} />
-          </div>
-        </div>
-      )
+      content = this._designerContainer || <DesignContainer store={store} />
+      this._designerContainer = content
     }
     if(store.route === GALLERY_ROUTE) {
       content =  <ColorPickerComponent />
@@ -38,24 +32,12 @@ export default class App extends Component {
       <div>
         <TabbarComponent route={store.route} setRoute={store.setRoute} />
         {content}
+        <NotificationSystem ref="notificationSystem" />
       </div>
     )
   }
-}
-
-const styles = {
-  design: {
-    margin: '0 auto',
-    width: '100%',
-    maxWidth: sizes.destop_width,
-    boxSizing: 'border-box',
-    textAlign: 'center'
-  },
-  inner: {
-    display: 'inline-block',
-    margin: '0 auto',
-    width: '100%',
-    maxWidth: sizes.destop_width/2,
-    verticalAlign: 'top',
+  componentDidMount() {
+    /* setup notification system */
+    notification.setup(this.refs.notificationSystem)
   }
 }
