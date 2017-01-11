@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import {observer} from 'mobx-react'
 import {colors, sizes} from '../constants/theme'
+
+import DivComponent from './div-component'
+
 import UpIcon from './assets/up-icon'
 import Ratings from './assets/ratings'
+
 
 @observer
 export default class ItemComponent extends Component {
@@ -10,7 +14,9 @@ export default class ItemComponent extends Component {
         const {store} = this.props;
         return (
             <div style={styles.container}>
-                <div style={styles.div}></div>
+                <div style={styles.div}>
+                    <DivComponent {...store} scale={.7} />
+                </div>
                 <div style={styles.caption}>
                     <div style={styles.name}>{store.name}</div>
                     <div>
@@ -37,9 +43,11 @@ const styles = {
         boxShadow: '0 4px 10px 0 rgba(0,0,0,0.25)'
     },
     div: {
-        background: colors.white,
-        width: '100%',
         flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
     },
     caption: {
         width: '100%',

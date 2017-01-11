@@ -19,7 +19,9 @@ export default class DesignContainer extends Component {
                     <DesignerComponent store={store.design} />
                 </div>
                 <div style={styles.inner}>
-                    <DivComponent {...store.design} />
+                    <div style={styles.div_container}>
+                        <DivComponent {...store.design} />
+                    </div>
                     <input
                         value={store.design.name}
                         style={styles.input}
@@ -38,6 +40,7 @@ export default class DesignContainer extends Component {
         }
 
         const item = toJS(store.design);
+        item.shadow.asCss = store.design.shadow.asCss;
         item.key = (new Date)*1; 
 
         store.gallery.items.push(item)
@@ -47,6 +50,16 @@ export default class DesignContainer extends Component {
 }
 
 const styles = {
+  div_container: {
+    display: 'flex',
+    width: '100%',
+    height: sizes.max_div_height,
+    maxWidth: sizes.destop_width/2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottom: `1px solid ${colors.dark}`,
+    boxSizing: 'border-box'
+  },
   design: {
     margin: '0 auto',
     width: '100%',

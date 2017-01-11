@@ -7,31 +7,20 @@ import {colors, sizes} from '../constants/theme'
 @observer
 export default class DivComponent extends Component {
     render() {
-        const {width, height, backgroundColor, radius, shadow} = this.props;
+        const {width, height, backgroundColor, radius, shadow, scale = 1} = this.props;
+        const shadowCss = shadow.asCss;
+        if(scale != 1) {
+            //shadowCss = `${shadow.x*scale}px ${shadow.y*scale}px ${shadow.blur*scale}px ${this.color}`
+        }
         const style =  {
-            width: width,
-            height: height,
+            width: width*scale,
+            height: height*scale,
             backgroundColor: backgroundColor,
-            borderRadius: radius,
-            boxShadow: shadow.asCss
+            borderRadius: radius*scale,
+            boxShadow: shadowCss
         }
         return (
-            <div style={styles.container}>
                 <div style={style}> </div>
-            </div>
         )
-    }
-}
-
-const styles = {
-    container: {
-        display: 'flex',
-        width: '100%',
-        height: sizes.max_div_height,
-        maxWidth: sizes.destop_width/2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderBottom: `1px solid ${colors.dark}`,
-        boxSizing: 'border-box'
     }
 }

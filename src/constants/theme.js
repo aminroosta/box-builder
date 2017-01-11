@@ -10,8 +10,8 @@ export const sizes = {
     small: 18,
     padding: 10,
     small_padding: 5,
-    max_div_height: 300,
-    max_div_width: 300,
+    max_div_height: 240,
+    max_div_width: 240,
     destop_width: 900
 }
 
