@@ -5,14 +5,17 @@ import Slider from 'rc-slider'
 
 @observer
 export default class SliderComponent extends Component {
+    defaultValue = null;
     render() {
-        const {store} = this.props;
+        const {title, onChange, min = 0, max=100, defaultValue = 50} = this.props;
+        this.defaultValue = this.defaultValue === null ? defaultValue : this.defaultValue;
+
         return (
             <div style={styles.container}>
                 <div style={styles.subcontainer}>
-                    <div style={styles.title}>Title: </div>
-                    <Slider defaultValue={50} min={0} max={100}
-                            onChange={value => console.warn(value) } />
+                    <div style={styles.title}>{title}</div>
+                    <Slider defaultValue={this.defaultValue} min={min} max={max}
+                            onChange={onChange} />
                 </div>
                 <div style={styles.underline} />
             </div>
@@ -20,14 +23,14 @@ export default class SliderComponent extends Component {
     }
 }
 
-const height = 50;
+const height = 45;
 const styles = {
     container: {
         background: colors.white,
         height: height,
         display: 'flex',
         flexFlow: 'row wrap',
-        padding: `7px ${sizes.padding} 0 10px`,
+        padding: `7px ${sizes.padding}px 0 10px`,
         boxSizing: 'border-box',
     },
     subcontainer: {
@@ -38,11 +41,12 @@ const styles = {
         alignItems: 'center',
     },
     title: {
-        width: '30%',
-        fontSize: sizes.medium
+        width: '43%',
+        fontSize: sizes.small,
+        textAlign: 'left',
     },
     slider: {
-        width: '60%',
+        width: '57%',
     },
     underline: {
         borderBottom: `1px solid ${colors.dark}`,

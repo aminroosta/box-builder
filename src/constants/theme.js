@@ -9,7 +9,10 @@ export const sizes = {
     medium: 20,
     small: 18,
     padding: 10,
-    small_padding: 5
+    small_padding: 5,
+    max_div_height: 300,
+    max_div_width: 300,
+    destop_width: 900
 }
 
 export default { colors, }

@@ -36,9 +36,10 @@ const styles = {
         width: '100%',
         height: height,
         paddingTop: '20px',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
     },
     tabs: {
+        margin: '0 auto',
         display: 'flex',
         flexFlow: 'row wrap',
         justifyContent: 'center',

@@ -6,14 +6,15 @@ import { SliderPicker } from 'react-color'
 @observer
 export default class ColorPickerComponent extends Component {
     render() {
-        const {store} = this.props;
+        const {title, onChange} = this.props;
+
         return (
             <div style={styles.container}>
                 <div style={styles.subcontainer}>
-                    <div style={styles.title}>Title: </div>
+                    <div style={styles.title}>{title}</div>
                     <div style={styles.slider}>
-                        <SliderPicker color={{ r: '241', g: '112', b: '19', a: '1', }}
-                                    onChange={value => console.warn(value) } />
+                        <SliderPicker color={colors.red}
+                                      onChange={v => onChange(v.hex)} />
                     </div>
                 </div>
                 <div style={styles.underline} />
@@ -22,12 +23,12 @@ export default class ColorPickerComponent extends Component {
     }
 }
 
-const height = 70;
+const height = 60;
 const styles = {
     container: {
         background: colors.white,
         height: height,
-        padding: '7px 10px 0 10px',
+        padding: '3px 10px 0 10px',
         width: '100%',
         boxSizing: 'border-box',
         position: 'relative'
@@ -39,15 +40,17 @@ const styles = {
     },
     title: {
         position: 'absolute',
-        width: '23%',
+        width: '30%',
+        left: 0,
+        textAlign: 'left',
         display: 'inline-block',
-        fontSize: sizes.medium,
+        fontSize: sizes.small,
         lineHeight: '47px'
     },
     slider: { // SliderPicker doesn't like flexbox!
         position: 'absolute',
-        left: '23%',
-        width: '77%',
+        left: '30%',
+        width: '70%',
         display: 'inline-block'
     },
     underline: {
