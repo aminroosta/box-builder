@@ -39,6 +39,8 @@
     "rc-slider": "^5.4.3",
     "react": "^0.14.6",
     "react-color": "^2.11.1",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "react-highlight": "^0.9.0",
+    "reset-css": "^2.2.0"
   }
 }
