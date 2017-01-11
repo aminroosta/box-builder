@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
-import { SketchPicker } from 'react-color'
-import Slider from 'rc-slider'
+import BorderComponent from './components/border-component'
 
+import borderStore from './stores/border-store'
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <Slider tipTransitionName="rc-slider-tooltip-zoom-down" onChange={value => this.log(value)} />
+        <BorderComponent store={borderStore} />
       </div>
     )
-        //<SketchPicker />
-  }
-  log(value) {
-    console.warn(value)
   }
 }
