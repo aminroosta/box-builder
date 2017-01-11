@@ -8,9 +8,7 @@ import {DESIGN_ROUTE, GALLERY_ROUTE, SEARCH_ROUTE} from './constants/routes'
 import TabbarComponent from './components/tabbar-component'
 import DesignContainer from './containers/design-container'
 
-import ColorPickerComponent from './components/colorpicker-component'
 import ItemContainer from './containers/item-container'
-import ItemComponent from './components/item-component'
 
 
 @observer
@@ -25,7 +23,7 @@ export default class App extends Component {
       this._designerContainer = content
     }
     if(store.route === GALLERY_ROUTE) {
-      content =  <ColorPickerComponent />
+      content = <ItemContainer store={store} />
     }
 
     return (

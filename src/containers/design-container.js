@@ -36,7 +36,11 @@ export default class DesignContainer extends Component {
             notification.warning('Name should not be empty!')
             return;
         }
-        store.gallery.items.push(toJS(store.design))
+
+        const item = toJS(store.design);
+        item.key = (new Date)*1; 
+
+        store.gallery.items.push(item)
         notification.success('Successfully saved to gallery.')
         store.design.name = ''
     }

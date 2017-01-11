@@ -12,9 +12,11 @@ export default class ItemComponent extends Component {
             <div style={styles.container}>
                 <div style={styles.div}></div>
                 <div style={styles.caption}>
-                    <div style={styles.name}>my name here</div>
+                    <div style={styles.name}>{store.name}</div>
                     <div>
-                        <div style={styles.stars}><Ratings/></div>
+                        <div style={styles.stars}>
+                            <Ratings rate={store.star} updateStars={v => store.star = v}/>
+                        </div>
                         <div style={styles.up}><UpIcon /></div>
                     </div>
                 </div>
@@ -24,7 +26,7 @@ export default class ItemComponent extends Component {
     }
 }
 
-const height = 280;
+const height = 260;
 const styles = {
     container: {
         margin: sizes.small_padding,
@@ -37,11 +39,10 @@ const styles = {
     div: {
         background: colors.white,
         width: '100%',
-        flexGrow: 10,
+        flexGrow: 1,
     },
     caption: {
         width: '100%',
-        flexGrow: 1,
         background: colors.dark,
         boxSizing: 'border-box',
         padding: sizes.padding,
@@ -52,6 +53,7 @@ const styles = {
     },
     name: {
         fontSize: sizes.small,
+        textAlign: 'left'
     },
     stars: {
         display: 'inline-block',

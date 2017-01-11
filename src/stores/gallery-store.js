@@ -23,6 +23,7 @@ class GalleryStore {
         if(!this.filter_on) {
             return this.items
         }
+
         return this.items.filter(item => {
             return between(item.width, this.filter.min_width, this.filter.max_width) &&
                    between(item.height, this.filter.min_height, this.filter.max_height) &&
