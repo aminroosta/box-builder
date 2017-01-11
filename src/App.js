@@ -5,6 +5,7 @@ import borderStore from './stores/border-store'
 import TabbarComponent from './components/tabbar-component'
 import SliderComponent from './components/slider-component'
 import ColorPickerComponent from './components/colorpicker-component'
+import BottomComponent from './components/bottom-component'
 
 export default class App extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class App extends Component {
         <SliderComponent />
         <SliderComponent />
         <ColorPickerComponent />
-        <BorderComponent store={borderStore} />
+        <BottomComponent />
       </div>
     )
   }

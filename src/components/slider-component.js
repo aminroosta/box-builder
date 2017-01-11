@@ -27,7 +27,7 @@ const styles = {
         height: height,
         display: 'flex',
         flexFlow: 'row wrap',
-        padding: '7px 10px 0 10px',
+        padding: `7px ${sizes.padding} 0 10px`,
         boxSizing: 'border-box',
     },
     subcontainer: {
