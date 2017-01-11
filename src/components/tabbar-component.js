@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
+
 import {observer} from 'mobx-react'
 import {colors, sizes} from '../constants/theme'
+
 import SearchIcon from './assets/search-icon'
+import {DESIGN_ROUTE, GALLERY_ROUTE, SEARCH_ROUTE} from '../constants/routes'
 
 
 
 @observer
 export default class TabbarComponent extends Component {
     render() {
-        const {store} = this.props;
+        const {route, setRoute} = this.props;
+        const design_bg = route === DESIGN_ROUTE ? colors.red : 'transparent'
+        const gallery_bg = route !== DESIGN_ROUTE ? colors.red : 'transparent'
         return (
             <div style={styles.container}>
                 <div style={styles.tabs}>
                     <div style={{...styles.tab, ...styles.title}}>My Store</div>
                     <div style={{...styles.tab, ...styles.title}}><SearchIcon /></div>
-                    <div style={styles.tab}>Design</div>
-                    <div style={styles.tab}>Category</div>
-                    <div style={{...styles.underline, background: colors.red}}></div>
-                    <div style={styles.underline}></div>
+                    <div style={styles.tab} onClick={() => setRoute(DESIGN_ROUTE)}>Design</div>
+                    <div style={styles.tab} onClick={() => setRoute(GALLERY_ROUTE)}>Category</div>
+                    <div style={{...styles.underline, background: design_bg}}></div>
+                    <div style={{...styles.underline, background: gallery_bg}}></div>
                 </div>
             </div>
         )
