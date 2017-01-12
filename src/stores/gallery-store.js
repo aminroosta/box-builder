@@ -1,8 +1,21 @@
-import {observable, action, computed} from 'mobx'
+import {observable, action, computed, autorunAsync, toJS} from 'mobx'
 import {colors, sizes} from '../constants/theme'
 
 function between(value, min, max) {
     return value >= min && value <= max
+}
+
+/* sync saved items in localStorage */
+function syncItems(gallaryStore) {
+    const ITEMS_KEY = 'ITEMS_KEY'
+    const items = localStorage.getItem(ITEMS_KEY)
+    if(items) {
+        gallaryStore.items = JSON.parse(items)
+    }
+    autorunAsync(() => {
+        const items = toJS(gallaryStore.items)
+        localStorage.setItem(ITEMS_KEY, JSON.stringify(items))
+    }, 300)
 }
 
 class GalleryFilter {
@@ -15,6 +28,9 @@ class GalleryFilter {
 }
 
 class GalleryStore {
+    constructor() {
+        syncItems(this)
+    }
     @observable items = []
     @observable filter_on = false
     @observable filter = new GalleryFilter;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-const UpIcon = () => (
-    <svg width="25px" height="25px" viewBox="-1 0 71 71" version="1.1" xmlns="http://www.w3.org/2000/svg">
+const UpIcon = ({onClick}) => (
+    <svg onClick={onClick} width="25px" height="25px" viewBox="-1 0 71 71" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <desc>Created with Sketch.</desc>
         <defs></defs>
         <g id="ic_back" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd"
