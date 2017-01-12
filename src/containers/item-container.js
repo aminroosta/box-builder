@@ -13,7 +13,7 @@ export default class ItemContainer extends Component {
             {
                 store.gallery.items_filtered.map(item => (
                         <div key={item.key} style={styles.child}>
-                            <ItemComponent store={item} />
+                            <ItemComponent store={item} removeItem={i => store.gallery.removeItem(i)} />
                         </div>
                     )
                 )

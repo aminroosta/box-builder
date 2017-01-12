@@ -9,6 +9,7 @@ import DivComponent from './div-component'
 
 import UpIcon from './assets/up-icon'
 import DownIcon from './assets/down-icon'
+import RemoveIcon from './assets/remove-icon'
 import Ratings from './assets/ratings'
 
 class ItemComponentState {
@@ -21,7 +22,7 @@ export default class ItemComponent extends Component {
     state = new ItemComponentState
 
     render() {
-        const {store} = this.props;
+        const {store, removeItem} = this.props;
 
         let Div = null;
         if(!this.state.showDetails) {
@@ -37,14 +38,16 @@ export default class ItemComponent extends Component {
             UpDownIcon = <DownIcon onClick={() => this.state.showDetails = false} />
         }
         
+        
+        let removeIcon = null;
         let HighlightCss = null;
         if(this.state.showDetails) {
-            console.warn(JSON.stringify(store))
             HighlightCss = (
                 <div style={{textAlign: 'left'}}>
                     <Highlight className="css">{store.asCss}</Highlight>
                 </div>
             )
+            removeIcon = <RemoveIcon onClick={() => removeItem(store)} />
         }
 
         let styleCaption = {...styles.caption, flexGrow:(this.state.showDetails ? 1 : 0)}
@@ -52,15 +55,18 @@ export default class ItemComponent extends Component {
         return (
             <div style={styles.container}>
                 <div style={styleCaption}>
-                    <div style={styles.name}>{store.name}</div>
+                    <div>
+                        <div style={styles.left}>
+                            <div style={styles.name}>{store.name}</div>
+                        </div>
+                        <div style={styles.right}> {removeIcon} </div>
+                    </div>
                     {HighlightCss}
                     <div>
-                        <div style={styles.stars}>
+                        <div style={styles.left}>
                             <Ratings rate={store.star} updateStars={v => store.star = v}/>
                         </div>
-                        <div style={styles.up}>
-                            {UpDownIcon}
-                        </div>
+                        <div style={styles.right}> {UpDownIcon} </div>
                     </div>
                 </div>
                 { Div }
@@ -102,12 +108,12 @@ const styles = {
         fontSize: sizes.small,
         textAlign: 'left'
     },
-    stars: {
+    left: {
         display: 'inline-block',
         width: '80%',
         textAlign: 'left'
     },
-    up: {
+    right: {
         display: 'inline-block',
         width: '20%',
         textAlign: 'right'

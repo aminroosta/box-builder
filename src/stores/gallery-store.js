@@ -35,6 +35,11 @@ class GalleryStore {
     @observable filter_on = false
     @observable filter = new GalleryFilter;
     
+    @action removeItem(item) {
+        const inx = this.items.indexOf(item);
+        this.items.splice(inx,1)
+    }
+    
     @computed get items_filtered() {
         if(!this.filter_on) {
             return this.items
