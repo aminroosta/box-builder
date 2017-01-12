@@ -17,8 +17,8 @@ export default class TabbarComponent extends Component {
         return (
             <div style={styles.container}>
                 <div style={styles.tabs}>
-                    <div style={{...styles.tab, ...styles.title}}>My Store</div>
-                    <div style={{...styles.tab, ...styles.title}}><SearchIcon /></div>
+                    <div style={{...styles.tab, ...styles.title}}>My JS Test</div>
+                    <div style={{...styles.tab, ...styles.title}}><SearchIcon onClick={() => setRoute(SEARCH_ROUTE)} /></div>
                     <div style={styles.tab} onClick={() => setRoute(DESIGN_ROUTE)}>Design</div>
                     <div style={styles.tab} onClick={() => setRoute(GALLERY_ROUTE)}>Category</div>
                     <div style={{...styles.underline, background: design_bg}}></div>

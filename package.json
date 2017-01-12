@@ -41,6 +41,7 @@
     "react-color": "^2.11.1",
     "react-dom": "^0.14.6",
     "react-highlight": "^0.9.0",
+    "react-modal": "^1.6.5",
     "react-notification-system": "^0.2.11",
     "reset-css": "^2.2.0"
   }

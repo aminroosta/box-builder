@@ -32,7 +32,7 @@ class GalleryStore {
         syncItems(this)
     }
     @observable items = []
-    @observable filter_on = false
+    //@observable filter_on = false
     @observable filter = new GalleryFilter;
     
     @action removeItem(item) {
@@ -41,9 +41,7 @@ class GalleryStore {
     }
     
     @computed get items_filtered() {
-        if(!this.filter_on) {
-            return this.items
-        }
+        //if(!this.filter_on) { return this.items }
 
         return this.items.filter(item => {
             return between(item.width, this.filter.min_width, this.filter.max_width) &&

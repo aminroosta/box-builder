@@ -7,14 +7,14 @@ import Slider from 'rc-slider'
 export default class SliderComponent extends Component {
     defaultValue = null;
     render() {
-        const {title, onChange, min = 0, max=100, defaultValue = 50} = this.props
+        const {title, onChange, min = 0, max=100, defaultValue = 50, range = false} = this.props
         this.defaultValue = this.defaultValue === null ? defaultValue : this.defaultValue
 
         return (
             <div style={styles.container}>
                 <div style={styles.subcontainer}>
                     <div style={styles.title}>{title}</div>
-                    <Slider defaultValue={this.defaultValue} min={min} max={max}
+                    <Slider defaultValue={this.defaultValue} min={min} max={max} range={range}
                             onChange={onChange} />
                 </div>
                 <div style={styles.underline} />
