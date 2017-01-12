@@ -20,6 +20,18 @@ class DesignStore {
     @observable star = 0
     @observable name = ''
     @observable shadow = new ShadowSore
+
+    @computed get asCss() {
+        return [
+            `.${this.name} {`,
+            ` background-color: ${this.backgroundColor};`,
+            ` width: ${this.width}px;`,
+            ` height: ${this.height}px;`,
+            ` border-radius: ${this.radius}px;`,
+            ` box-shadow: ${this.shadow.asCss};`,
+            `}`
+        ].join('\n')
+    }
 }
 
 export default DesignStore

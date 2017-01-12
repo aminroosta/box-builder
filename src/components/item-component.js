@@ -3,6 +3,8 @@ import {observable} from 'mobx'
 import {observer} from 'mobx-react'
 import {colors, sizes} from '../constants/theme'
 
+import Highlight from 'react-highlight'
+
 import DivComponent from './div-component'
 
 import UpIcon from './assets/up-icon'
@@ -27,10 +29,6 @@ export default class ItemComponent extends Component {
                         <DivComponent {...store} scale={.7} />
                   </div>
         }
-        else {
-            Div = <div style={styles.div}>
-                  </div>
-        }
 
         let UpDownIcon = null;
         if(!this.state.showDetails) {
@@ -38,12 +36,24 @@ export default class ItemComponent extends Component {
         } else {
             UpDownIcon = <DownIcon onClick={() => this.state.showDetails = false} />
         }
+        
+        let HighlightCss = null;
+        if(this.state.showDetails) {
+            console.warn(JSON.stringify(store))
+            HighlightCss = (
+                <div style={{textAlign: 'left'}}>
+                    <Highlight className="css">{store.asCss}</Highlight>
+                </div>
+            )
+        }
+
+        let styleCaption = {...styles.caption, flexGrow:(this.state.showDetails ? 1 : 0)}
 
         return (
             <div style={styles.container}>
-                { Div }
-                <div style={styles.caption}>
+                <div style={styleCaption}>
                     <div style={styles.name}>{store.name}</div>
+                    {HighlightCss}
                     <div>
                         <div style={styles.stars}>
                             <Ratings rate={store.star} updateStars={v => store.star = v}/>
@@ -53,7 +63,7 @@ export default class ItemComponent extends Component {
                         </div>
                     </div>
                 </div>
-
+                { Div }
             </div>
         )
     }
@@ -65,7 +75,7 @@ const styles = {
         margin: sizes.small_padding,
         height: height,
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column-reverse',
         boxSizing: 'border-box',
         boxShadow: '0 4px 10px 0 rgba(0,0,0,0.25)'
     },
@@ -78,13 +88,15 @@ const styles = {
     },
     caption: {
         width: '100%',
+        flexGrow: 0,
         background: colors.dark,
         boxSizing: 'border-box',
         padding: sizes.padding,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        color: colors.white
+        color: colors.white,
+        transition: 'all .5s'
     },
     name: {
         fontSize: sizes.small,

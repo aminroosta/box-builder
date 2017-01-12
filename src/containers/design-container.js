@@ -41,6 +41,7 @@ export default class DesignContainer extends Component {
 
         const item = toJS(store.design);
         item.shadow.asCss = store.design.shadow.asCss;
+        item.asCss = store.design.asCss;
         item.key = (new Date)*1; 
 
         store.gallery.items.push(item)
